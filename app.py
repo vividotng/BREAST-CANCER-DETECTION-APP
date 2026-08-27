@@ -345,7 +345,12 @@ st.markdown("""
 # ============================================================
 
 DEVICE = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = "mammogram_v10_final.pth"
+from huggingface_hub import hf_hub_download
+
+MODEL_PATH = hf_hub_download(
+    repo_id="vividotng/breast-mammogram-cnn-v10",
+    filename="mammogram_v10_final.pth"
+)
 
 @st.cache_resource
 def get_model():
