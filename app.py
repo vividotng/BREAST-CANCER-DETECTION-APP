@@ -3,7 +3,7 @@ import torch
 from PIL import Image
 from pathlib import Path
 from torchvision import transforms
-from model import load_model
+from model import MammogramResNetV10
 import cv2
 import numpy as np
 
