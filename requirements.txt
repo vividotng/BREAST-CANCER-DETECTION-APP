@@ -7,3 +7,4 @@ scikit-learn
 pillow
 matplotlib
 opencv-python-headless
+huggingface_hub
