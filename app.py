@@ -351,10 +351,23 @@ MODEL_PATH = hf_hub_download(
     repo_id="vividotng/breast-mammogram-cnn-v10",
     filename="mammogram_v10_final.pth"
 )
-
 @st.cache_resource
-def get_model():
-    model = load_model(MODEL_PATH, DEVICE)
+def load_model():
+    checkpoint = torch.load(
+        MODEL_PATH,
+        map_location=DEVICE
+    )
+
+    model = MammogramResNetV10(num_classes=2)
+
+    if isinstance(checkpoint, dict) and "model_state_dict" in checkpoint:
+        model.load_state_dict(checkpoint["model_state_dict"])
+    else:
+        model.load_state_dict(checkpoint)
+
+    model.to(DEVICE)
+    model.eval()
+
     return model
 
 transform = transforms.Compose([
