@@ -351,8 +351,9 @@ MODEL_PATH = hf_hub_download(
     repo_id="vividotng/breast-mammogram-cnn-v10",
     filename="mammogram_v10_final.pth"
 )
+
 @st.cache_resource
-def load_model():
+def load_v10_model():
     checkpoint = torch.load(
         MODEL_PATH,
         map_location=DEVICE
@@ -559,7 +560,7 @@ if uploaded:
         st.stop()
 
     try:
-        model = get_model()
+        model = load_v10_model()
     except Exception as e:
         st.error(f"Unable to load the V10 model: {e}")
         st.stop()
