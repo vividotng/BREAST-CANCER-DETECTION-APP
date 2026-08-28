@@ -67,7 +67,7 @@ st.markdown("""
     position: relative;
     z-index: 1;
     max-width: 1220px;
-    padding-top: 1.25rem;
+    padding-top: 3rem;
     padding-bottom: 3rem;
 }
 
