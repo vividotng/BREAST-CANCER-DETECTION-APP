@@ -15,7 +15,7 @@ st.set_page_config(
     page_title="Breast Cancer Detection | CNN V10",
     page_icon="🩺",
     layout="wide",
-    initial_sidebar_state="collapsed",
+    initial_sidebar_state="expanded",
 )
 
 # ============================================================
@@ -399,9 +399,7 @@ st.markdown("""
 # ABOUT + DISCLAIMER
 # ============================================================
 
-left, right = st.columns([1, 2.45], gap="large")
-
-with left:
+with st.sidebar:
     st.markdown(
         '<div class="card-title">ABOUT THIS APP</div>',
         unsafe_allow_html=True
@@ -424,7 +422,7 @@ with left:
         unsafe_allow_html=True
     )
 
-    uploaded = st.file_uploader(
+uploaded = st.file_uploader(
         "Upload a mammogram JPG",
         type=["jpg", "jpeg", "png"],
         label_visibility="collapsed"
